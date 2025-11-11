@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memory-hog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: memory-hog
+  template:
+    metadata:
+      labels:
+        app: memory-hog
+    spec:
+      containers:
+        - name: memory-hog
+          image: python:3.11-slim
+          command: ["python", "-c", "a = ' ' * 2000000000; print('Allocated memory!'); import time; time.sleep(3600)"]
+          resources:
+            requests:
+              memory: "50Mi"   # intentionally too low
+            limits:
+              memory: "100Mi"
