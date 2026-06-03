@@ -3,6 +3,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
     name: my-deployment-github
+    annotations:
+      argocd.argoproj.io/sync-options: Replace=false
 spec:
   replicas: 3
   selector:
