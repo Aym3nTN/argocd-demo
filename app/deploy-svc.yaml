@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
     name: my-deployment-github
     annotations:
-      argocd.argoproj.io/sync-options: Replace=false
+      argocd.argoproj.io/sync-options: Replace=false,Force=false
 spec:
   replicas: 3
   selector:
